@@ -25,14 +25,8 @@ public class LenderActivity extends AppCompatActivity {
         if (findViewById(R.id.main_container) != null) {
             if (savedInstanceState != null) return;
 
-            Fragment fragment = null;
+            Fragment fragment = new LendMoneyListFragment();
 
-            if (isRegistered()) {
-                fragment = new LendMoneyListFragment();
-            } else {
-
-                fragment = new RegisterAsLenderFragment();
-            }
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.main_container, fragment).commit();
         }
@@ -40,10 +34,6 @@ public class LenderActivity extends AppCompatActivity {
         findWidgets();
     }
 
-    private boolean isRegistered() {
-        SharedPreferences sharePref = getSharedPreferences("RegisterAsLender", MODE_PRIVATE);
-        return sharePref.getBoolean("isRegistered", false);
-    }
     private void findWidgets() {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -90,35 +80,35 @@ public class LenderActivity extends AppCompatActivity {
                 return false;
             }
         });
-//        navigationView.setNavigationItemSelectedListener(
-//                menuItem -> {
-//            Fragment fragment = null;
-//            switch (menuItem.getItemId()) {
-//                case R.id.nav_home:
-//                    fragment = new WelcomeFragment();
-//
-//                    break;
-//                case R.id.nav_borrow:
-//                    fragment = new BorrowFragment();
-//                    break;
-//                case R.id.nav_lend:
-//                    fragment = new LendFragment();
-//                    break;
-//                case R.id.nav_deal:
-//                    fragment = new MyDealFragment();
-//                    break;
-//            }
-//            if (fragment != null) {
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.main_container, fragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//                getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-//            }
-//            menuItem.setChecked(true);
-//            mDrawerLayout.closeDrawers();
-//            return true;
-//
-//        });
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                Fragment fragment = null;
+                switch (menuItem.getItemId()) {
+                    case R.id.nav_home:
+                        fragment = new LendMoneyListFragment();
+
+                        break;
+                    case R.id.nav_profile:
+                        fragment = new LenderProfileFragment();
+                        break;
+                    case R.id.nav_lend:
+                        fragment = new LendMoneyFragment();
+                        break;
+                    case R.id.nav_deal:
+                        fragment = new LenderDealFragment();
+                        break;
+                }
+                if (fragment != null) {
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.main_container, fragment)
+                            .commit();
+                }
+                menuItem.setChecked(true);
+                mDrawerLayout.closeDrawers();
+                return true;
+            }
+        });
+
     }
 }

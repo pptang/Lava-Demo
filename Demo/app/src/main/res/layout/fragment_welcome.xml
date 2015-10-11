@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Loan Broker"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    <LinearLayout android:id="@+id/midLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorPrimaryDark"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+
+    </LinearLayout>
+
+    <TextView android:id="@+id/tvLendTitle"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:background="@drawable/circular_bg"
+        android:text="Lend Money"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:gravity="center"
+        android:layout_above="@+id/midLine"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+
+        />
+    <TextView android:id="@+id/tvBorrowTitle"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:background="@drawable/circular_bg"
+        android:text="Borrow Money"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:gravity="center"
+        android:layout_below="@id/midLine"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>
