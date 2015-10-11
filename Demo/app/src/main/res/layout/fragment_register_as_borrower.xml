@@ -5,85 +5,81 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp">
+        android:layout_marginBottom="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView android:id="@+id/borrowerTitle"
-                android:layout_width="fill_parent"
+            <TextView android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_margin="15dp"
                 android:text="Register as a borrower"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
             <View android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/borrowerTitle"
-                android:background="@android:color/darker_gray" />
-
-            <TextView android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/line"
-                android:text="Name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:layout_below="@id/tvTitle"
+                android:background="@android:color/darker_gray"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp" />
 
             <LinearLayout android:id="@+id/ll_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/line"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Mr./Mrs."
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <EditText android:id="@+id/etName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"/>
+                    android:layout_weight="3" />
 
             </LinearLayout>
-            <LinearLayout android:id="@+id/ll_period"
+
+            <LinearLayout android:id="@+id/ll_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_below="@id/ll_name"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Period"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="From"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="mm/dd/yyyy"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="To"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="mm/dd/yyyy"/>
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Amount"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
+                <EditText android:id="@+id/etAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
             </LinearLayout>
 
             <LinearLayout android:id="@+id/ll_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll_period"
+                android:layout_margin="10dp"
+                android:layout_below="@id/ll_amount"
                 android:orientation="vertical">
 
                 <TextView
@@ -91,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:text="Method of Repayment"
                     android:layout_marginTop="5dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -107,6 +103,7 @@
             <LinearLayout android:id="@+id/ll_revenue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_below="@id/ll_method"
                 android:orientation="vertical">
 
@@ -130,23 +127,27 @@
                     android:layout_height="wrap_content"
                     android:text="Investment" />
 
-
             </LinearLayout>
 
-
         </RelativeLayout>
+
     </ScrollView>
+
     <LinearLayout android:id="@+id/ll_register"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true">
-        <!--android:background="@color/primary">-->
+        android:layout_alignParentBottom="true"
+        android:background="@color/primary">
+
         <TextView
+            android:id="@+id/tv_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            android:text="Register"/>
+            android:text="Register" />
+
     </LinearLayout>
+
 </RelativeLayout>
