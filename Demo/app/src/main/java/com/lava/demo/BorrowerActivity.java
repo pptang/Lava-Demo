@@ -11,6 +11,15 @@ public class BorrowerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrower);
+
+        if (findViewById(R.id.borrower_main_container) != null) {
+            if (savedInstanceState != null) return;
+
+            RegisterAsBorrowerFragment registerAsBorrowerFragment = new RegisterAsBorrowerFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.borrower_main_container, registerAsBorrowerFragment)
+                    .commit();
+        }
     }
 
     @Override
