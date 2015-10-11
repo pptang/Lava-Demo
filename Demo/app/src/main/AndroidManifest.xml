@@ -16,6 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LenderActivity"
+            android:label="@string/title_activity_lender">
+
+        </activity>
+        <activity
+            android:name=".BorrowerActivity"
+            android:label="@string/title_activity_borrower">
+
+        </activity>
     </application>
 
 </manifest>
