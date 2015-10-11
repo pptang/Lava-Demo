@@ -2,6 +2,7 @@ package com.lava.demo;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,7 +36,10 @@ public class RegisterAsBorrowerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 SharedPreferences sp = getActivity().getSharedPreferences("RegisterAsBorrower", getActivity().MODE_PRIVATE);
-                Toast.makeText(getActivity(), "bcd", Toast.LENGTH_LONG).show();
+                sp.edit().putBoolean("isRegistered", true).apply();
+
+                Intent intent = new Intent(getActivity(), BorrowerActivity.class);
+                startActivity(intent);
             }
         });
     }
