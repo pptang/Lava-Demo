@@ -1,9 +1,12 @@
 package com.lava.demo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -11,6 +14,30 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        findWidgets();
+    }
+
+    private void findWidgets() {
+
+        TextView tvLend = (TextView) findViewById(R.id.tvLendTitle);
+        TextView tvBorrow = (TextView) findViewById(R.id.tvBorrowTitle);
+
+        tvLend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, LenderActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tvBorrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, BorrowerActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
