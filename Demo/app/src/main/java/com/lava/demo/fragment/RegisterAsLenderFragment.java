@@ -1,4 +1,4 @@
-package com.lava.demo;
+package com.lava.demo.fragment;
 
 
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.lava.demo.Config;
+import com.lava.demo.R;
+import com.lava.demo.activity.LenderActivity;
 
 public class RegisterAsLenderFragment extends Fragment {
 

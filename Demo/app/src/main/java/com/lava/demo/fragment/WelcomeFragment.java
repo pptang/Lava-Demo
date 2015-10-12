@@ -1,4 +1,4 @@
-package com.lava.demo;
+package com.lava.demo.fragment;
 
 
 import android.content.Context;
@@ -10,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.lava.demo.R;
+import com.lava.demo.activity.BorrowerActivity;
+import com.lava.demo.activity.LenderActivity;
 
 public class WelcomeFragment extends Fragment {
 

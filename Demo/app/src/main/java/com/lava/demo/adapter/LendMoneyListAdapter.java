@@ -1,6 +1,7 @@
 package com.lava.demo.adapter;
 
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.lava.demo.R;
+import com.lava.demo.activity.BorrowerActivity;
+import com.lava.demo.activity.LenderActivity;
+import com.lava.demo.fragment.BorrowerFormFragment;
+import com.lava.demo.logger.Dump;
 import com.lava.demo.model.LendItem;
 
 import java.util.List;
@@ -49,6 +54,9 @@ public class LendMoneyListAdapter extends RecyclerView.Adapter<LendMoneyListAdap
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.lend_money_list_item, parent, false);
 
+
+
+
         return new ViewHolder(view);
     }
 
@@ -58,6 +66,17 @@ public class LendMoneyListAdapter extends RecyclerView.Adapter<LendMoneyListAdap
         holder.tvName.setText("Name： " + item.getName());
         holder.tvAmount.setText("Amount： " + item.getAmount() + "NT");
         holder.tvRate.setText("Rate： " + item.getRate() + "%");
+        if (context instanceof LenderActivity) {
+            holder.btnBorrow.setVisibility(View.GONE);
+        } else {
+            holder.btnBorrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DialogFragment fragment = new BorrowerFormFragment();
+                    fragment.show(fragmentManager, "fragment_borrower_form");
+                }
+            });
+        }
 //        holder.btnBorrow.setOnClickListener(v -> {
 //            DialogFragment fragment = new BorrowerFormFragment();
 //            fragment.show(fragmentManager, "fragment_borrower_form");

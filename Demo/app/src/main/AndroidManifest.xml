@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".activity.WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LenderActivity"
+            android:name=".activity.LenderActivity"
             android:label="@string/title_activity_lender">
 
         </activity>
         <activity
-            android:name=".BorrowerActivity"
+            android:name=".activity.BorrowerActivity"
             android:label="@string/title_activity_borrower">
 
         </activity>

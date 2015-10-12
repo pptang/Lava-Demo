@@ -1,7 +1,5 @@
-package com.lava.demo;
+package com.lava.demo.activity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,19 +11,21 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class BorrowerActivity extends AppCompatActivity {
+import com.lava.demo.fragment.LendMoneyFragment;
+import com.lava.demo.fragment.LendMoneyListFragment;
+import com.lava.demo.fragment.LenderDealFragment;
+import com.lava.demo.fragment.LenderProfileFragment;
+import com.lava.demo.R;
+
+public class LenderActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_borrower);
+        setContentView(R.layout.activity_lender);
 
         if (findViewById(R.id.main_container) != null) {
             if (savedInstanceState != null) return;
@@ -61,17 +61,19 @@ public class BorrowerActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_borrower, menu);
+        getMenuInflater().inflate(R.menu.menu_lender, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -95,6 +97,9 @@ public class BorrowerActivity extends AppCompatActivity {
                     case R.id.nav_profile:
                         fragment = new LenderProfileFragment();
                         break;
+                    case R.id.nav_lend:
+                        fragment = new LendMoneyFragment();
+                        break;
                     case R.id.nav_deal:
                         fragment = new LenderDealFragment();
                         break;
@@ -109,5 +114,6 @@ public class BorrowerActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 }
