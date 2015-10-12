@@ -13,11 +13,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.lava.demo.R;
-import com.lava.demo.logger.Dump;
 
 import java.util.Calendar;
 
