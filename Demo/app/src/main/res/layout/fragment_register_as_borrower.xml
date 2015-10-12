@@ -5,7 +5,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp">
+        android:layout_above="@+id/ll_register">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -17,7 +17,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_margin="15dp"
                 android:text="Register as a borrower"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <View android:id="@+id/line"
                 android:layout_width="match_parent"
@@ -49,7 +49,66 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3" />
+            </LinearLayout>
 
+            <LinearLayout android:id="@+id/ll_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_name"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Age"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etAge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/ll_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_age"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="12.5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Gender"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <RadioGroup
+                    android:id="@+id/radioGender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Male" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout android:id="@+id/ll_amount"
@@ -57,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_below="@id/ll_name"
+                android:layout_below="@id/ll_gender"
                 android:orientation="horizontal">
 
                 <TextView
@@ -75,6 +134,7 @@
                     android:layout_weight="3" />
             </LinearLayout>
 
+            <!--
             <LinearLayout android:id="@+id/ll_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,36 +157,158 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bullet Repayment" />
+            </LinearLayout>
+            -->
 
+            <LinearLayout android:id="@+id/ll_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_amount"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Phone"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/ll_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_phone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Email"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/ll_job"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_email"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Job"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etJob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/ll_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_job"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Education"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <RadioGroup android:id="@+id/radioEducation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PhD" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Master" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="College" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Senior High School" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Junior High School" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout android:id="@+id/ll_revenue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_below="@id/ll_method"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_education"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Source of Revenue"
-                    android:layout_marginTop="3dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-                <CheckBox
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <CheckBox android:id="@+id/cbSales"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Sales" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbRent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rent" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbInvestment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Investment" />
-
             </LinearLayout>
 
         </RelativeLayout>
@@ -147,7 +329,6 @@
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:text="Register" />
-
     </LinearLayout>
 
 </RelativeLayout>
