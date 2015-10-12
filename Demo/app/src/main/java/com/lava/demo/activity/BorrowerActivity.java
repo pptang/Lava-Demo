@@ -12,13 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.lava.demo.fragment.BorrowerDealFragment;
+import com.lava.demo.fragment.BorrowerProfileFragment;
 import com.lava.demo.fragment.LendMoneyListFragment;
-import com.lava.demo.fragment.LenderDealFragment;
-import com.lava.demo.fragment.LenderProfileFragment;
 import com.lava.demo.R;
 
 public class BorrowerActivity extends AppCompatActivity {
-
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -32,14 +31,14 @@ public class BorrowerActivity extends AppCompatActivity {
             Fragment fragment = new LendMoneyListFragment();
 
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_container, fragment).commit();
+                    .add(R.id.main_container, fragment)
+                    .commit();
         }
 
         findWidgets();
     }
 
     private void findWidgets() {
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) setupDrawerContent(navigationView);
@@ -52,9 +51,7 @@ public class BorrowerActivity extends AppCompatActivity {
             Drawable drawable = getResources().getDrawable(R.drawable.ic_menu);
             ab.setHomeAsUpIndicator(drawable);
             ab.setDisplayHomeAsUpEnabled(true);
-
         }
-
     }
 
     @Override
@@ -79,30 +76,26 @@ public class BorrowerActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                return false;
-            }
-        });
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
                 Fragment fragment = null;
+
                 switch (menuItem.getItemId()) {
                     case R.id.nav_home:
                         fragment = new LendMoneyListFragment();
-
                         break;
                     case R.id.nav_profile:
-                        fragment = new LenderProfileFragment();
+                        fragment = new BorrowerProfileFragment();
                         break;
                     case R.id.nav_deal:
-                        fragment = new LenderDealFragment();
+                        fragment = new BorrowerDealFragment();
                         break;
                 }
+
                 if (fragment != null) {
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.main_container, fragment)
                             .commit();
                 }
+
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
                 return true;
