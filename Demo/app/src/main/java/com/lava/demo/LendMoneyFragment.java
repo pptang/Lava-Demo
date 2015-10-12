@@ -1,18 +1,39 @@
 package com.lava.demo;
 
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import com.lava.demo.db.LendTable;
+import com.lava.demo.model.LendItem;
+
+import de.greenrobot.event.EventBus;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LendMoneyFragment extends Fragment {
+public class LendMoneyFragment extends Fragment implements View.OnTouchListener{
 
+    LinearLayout llSend;
+    EditText etName;
+    EditText etAmount;
+    EditText etRate;
+    Context context;
 
     public LendMoneyFragment() {
         // Required empty public constructor
@@ -22,10 +43,85 @@ public class LendMoneyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_lend_money, container, false);
         getActivity().setTitle("Lend Money");
-        return inflater.inflate(R.layout.fragment_lend_money, container, false);
+        context = getActivity();
+        findWidgets(view);
+        return view;
     }
 
+    private void findWidgets(View view) {
+        RelativeLayout rlLend = (RelativeLayout) view.findViewById(R.id.rl_lend);
+        rlLend.setOnTouchListener(this);
+        etAmount = (EditText) view.findViewById(R.id.etAmount);
+        etName = (EditText) view.findViewById(R.id.etName);
+        etRate = (EditText) view.findViewById(R.id.etRate);
+        llSend = (LinearLayout) view.findViewById(R.id.ll_send);
+        llSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertIntoLendTable(etName.getText().toString(), etAmount.getText().toString(),
+                        etRate.getText().toString());
+
+
+            }
+        });
+
+    }
+
+    private void insertIntoLendTable(final String name, final String amount, final String rate) {
+
+        new AsyncTask<Void, Void, LendItem>() {
+
+            ProgressDialog dialog;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                dialog = new ProgressDialog(context);
+                dialog.setMessage("Loading...");
+                dialog.show();
+            }
+
+            @Override
+            protected LendItem doInBackground(Void... params) {
+
+                LendTable lendTable = new LendTable(context);
+                LendItem item = new LendItem(name, amount, rate);
+                lendTable.insert(item);
+
+                return item;
+            }
+
+            @Override
+            protected void onPostExecute(LendItem item) {
+                super.onPostExecute(item);
+
+                EventBus.getDefault().post(item);
+
+                dialog.dismiss();
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Success!");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.main_container, new LendMoneyListFragment())
+                                .commit();
+                    }
+
+                });
+                builder.show();
+
+            }
+        }.execute();
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        im.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        return false;
+    }
 
 }

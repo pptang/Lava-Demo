@@ -33,8 +33,8 @@ public class RegisterAsLenderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SharedPreferences sharePref =
-                        getActivity().getSharedPreferences("RegisterAsLender", getActivity().MODE_PRIVATE);
-                sharePref.edit().putBoolean("isRegistered", true).apply();
+                        getActivity().getSharedPreferences(Config.LENDER_REGISTER_STATUS, getActivity().MODE_PRIVATE);
+                sharePref.edit().putBoolean(Config.IS_REGISTERED, true).apply();
 
                 Intent intent = new Intent(getActivity(), LenderActivity.class);
                 startActivity(intent);

@@ -35,8 +35,9 @@ public class RegisterAsBorrowerFragment extends Fragment {
         ll_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sp = getActivity().getSharedPreferences("RegisterAsBorrower", getActivity().MODE_PRIVATE);
-                sp.edit().putBoolean("isRegistered", true).apply();
+                SharedPreferences sp = getActivity().getSharedPreferences(Config.BORROWER_REGISTER_STATUS,
+                        getActivity().MODE_PRIVATE);
+                sp.edit().putBoolean(Config.IS_REGISTERED, true).apply();
 
                 Intent intent = new Intent(getActivity(), BorrowerActivity.class);
                 startActivity(intent);
