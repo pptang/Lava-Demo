@@ -61,8 +61,7 @@ public class RegisterAsBorrowerFragment extends Fragment {
             @Override
 
             public void onClick(View viewChild) {
-                SharedPreferences sp = getActivity().getSharedPreferences(Config.BORROWER_REGISTER_STATUS,
-                        getActivity().MODE_PRIVATE);
+                SharedPreferences sp = getActivity().getSharedPreferences(Config.BORROWER_REGISTER_STATUS, getActivity().MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
 
                 boolean isValidated = true;
