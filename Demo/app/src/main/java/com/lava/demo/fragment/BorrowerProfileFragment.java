@@ -34,35 +34,37 @@ public class BorrowerProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_borrower_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         activity = getActivity();
         activity.setTitle("Profile");
 
         SharedPreferences sp = activity.getSharedPreferences(Config.BORROWER_REGISTER_STATUS, activity.MODE_PRIVATE);
-        String name = sp.getString("name", "");
-        int age = sp.getInt("age", 0);
-        String gender = sp.getString("gender", "");
-        String account = sp.getString("account", "");
-        String phone = sp.getString("phone", "");
-        String email = sp.getString("email", "");
-        String job = sp.getString("job", "");
-        String education = sp.getString("education", "");
-        String revenue = sp.getString("revenue", "");
+        String name = sp.getString(Config.NAME, "");
+        String account = sp.getString(Config.ACCOUNT, "");
+        int deposit = 25000;
+        int age = sp.getInt(Config.AGE, 0);
+        String gender = sp.getString(Config.GENDER, "");
+        String phone = sp.getString(Config.PHONE, "");
+        String email = sp.getString(Config.EMAIL, "");
+        String job = sp.getString(Config.JOB, "");
+        String education = sp.getString(Config.EDUCATION, "");
+        String revenue = sp.getString(Config.REVENUE, "");
 
         profileItems.add(new ProfileItem("Name", name, R.drawable.icon_name));
+        profileItems.add(new ProfileItem("Account", account, R.drawable.icon_account));
+        profileItems.add(new ProfileItem("Deposit", String.valueOf(deposit), R.drawable.icon_deposit));
         if (age > 0) {
             profileItems.add(new ProfileItem("Age", String.valueOf(age), R.drawable.icon_age));
         }
         profileItems.add(new ProfileItem("Gender", gender, R.drawable.icon_gender));
-        profileItems.add(new ProfileItem("Account", account, R.drawable.icon_account));
         profileItems.add(new ProfileItem("Phone", phone, R.drawable.icon_phone));
         profileItems.add(new ProfileItem("Email", email, R.drawable.icon_email));
         profileItems.add(new ProfileItem("Job", job, R.drawable.icon_job));
         profileItems.add(new ProfileItem("Education", education, R.drawable.icon_education));
         profileItems.add(new ProfileItem("Source of Revenue", revenue, R.drawable.icon_revenue));
 
-        borrowerProfileRecyclerView = (RecyclerView) view.findViewById(R.id.borrower_profile_recycler_view);
+        borrowerProfileRecyclerView = (RecyclerView) view.findViewById(R.id.profile_recycler_view);
         borrowerProfileRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
 
         profileAdapter = new ProfileAdapter(profileItems);
