@@ -4,6 +4,7 @@ package com.lava.demo.fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,12 +14,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 
+import com.lava.demo.Config;
 import com.lava.demo.R;
 import com.lava.demo.db.LendTable;
+import com.lava.demo.logger.Dump;
 import com.lava.demo.model.LendItem;
 
 import de.greenrobot.event.EventBus;
@@ -27,14 +33,15 @@ import de.greenrobot.event.EventBus;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LendMoneyFragment extends Fragment implements View.OnTouchListener{
+public class LendMoneyFragment extends Fragment implements View.OnTouchListener,
+        AdapterView.OnItemSelectedListener{
 
     LinearLayout llSend;
     EditText etName;
     EditText etAmount;
-    EditText etRate;
     Context context;
-
+    Spinner spinnerRate;
+    String selectedRates = "";
     public LendMoneyFragment() {
         // Required empty public constructor
     }
@@ -47,6 +54,7 @@ public class LendMoneyFragment extends Fragment implements View.OnTouchListener{
         getActivity().setTitle("Lend Money");
         context = getActivity();
         findWidgets(view);
+
         return view;
     }
 
@@ -55,17 +63,36 @@ public class LendMoneyFragment extends Fragment implements View.OnTouchListener{
         rlLend.setOnTouchListener(this);
         etAmount = (EditText) view.findViewById(R.id.etAmount);
         etName = (EditText) view.findViewById(R.id.etName);
-        etRate = (EditText) view.findViewById(R.id.etRate);
+        spinnerRate = (Spinner) view.findViewById(R.id.spinnerRate);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.rates_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRate.setAdapter(adapter);
+        spinnerRate.setOnItemSelectedListener(this);
         llSend = (LinearLayout) view.findViewById(R.id.ll_send);
         llSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 insertIntoLendTable(etName.getText().toString(), etAmount.getText().toString(),
-                        etRate.getText().toString());
+                        selectedRates);
 
 
             }
         });
+
+        setLenderName();
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selectedRates = parent.getSelectedItem().toString();
+        Dump.e(selectedRates);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
@@ -115,6 +142,12 @@ public class LendMoneyFragment extends Fragment implements View.OnTouchListener{
 
             }
         }.execute();
+    }
+
+    private void setLenderName() {
+        SharedPreferences sharePref = getActivity().getSharedPreferences(Config.LENDER_REGISTER_STATUS, Context.MODE_PRIVATE);
+        String lenderName = sharePref.getString(Config.NAME, "Boss");
+        etName.setText(lenderName);
     }
 
     @Override

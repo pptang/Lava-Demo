@@ -1,6 +1,5 @@
 package com.lava.demo.fragment;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lava.demo.Config;
 import com.lava.demo.R;
+import com.lava.demo.Utils;
 import com.lava.demo.activity.BorrowerActivity;
 
 import android.widget.RadioButton;
@@ -25,10 +26,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class RegisterAsBorrowerFragment extends Fragment {
     public RegisterAsBorrowerFragment() {
         // Required empty public constructor
@@ -42,32 +39,6 @@ public class RegisterAsBorrowerFragment extends Fragment {
         return view;
     }
 
-    private Integer formatInteger(String value) {
-        Integer integer;
-
-        try {
-            integer = Integer.parseInt(value);
-        } catch(NumberFormatException exception) {
-            integer = -1;
-        }
-
-        return integer;
-    }
-
-    private String implode(ArrayList<String> list, String delimiter) {
-        String result = "";
-
-        for (int index = 0 ; index < list.size() ; index++) {
-            if (result == "") {
-                result = list.get(index);
-            } else {
-                result = result + delimiter + list.get(index);
-            }
-        }
-
-        return result;
-    }
-
     private void findWidget(View view) {
         LinearLayout ll_register = (LinearLayout) view.findViewById(R.id.ll_register);
 
@@ -76,7 +47,7 @@ public class RegisterAsBorrowerFragment extends Fragment {
         final EditText etName = (EditText) main_view.findViewById(R.id.etName);
         final EditText etAge = (EditText) main_view.findViewById(R.id.etAge);
         final RadioGroup radioGender = (RadioGroup) main_view.findViewById(R.id.radioGender);
-        final EditText etAmount = (EditText) main_view.findViewById(R.id.etAmount);
+        final EditText etAccount = (EditText) main_view.findViewById(R.id.etAccount);
         final EditText etPhone = (EditText) main_view.findViewById(R.id.etPhone);
         final EditText etEmail = (EditText) main_view.findViewById(R.id.etEmail);
         final EditText etJob = (EditText) main_view.findViewById(R.id.etJob);
@@ -94,37 +65,38 @@ public class RegisterAsBorrowerFragment extends Fragment {
                         getActivity().MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
 
-                Boolean isValidated = true;
+                boolean isValidated = true;
                 String errorMessage = "";
 
                 editor.putBoolean(Config.IS_REGISTERED, true);
-                editor.putString("name", etName.getText().toString());
+                editor.putString(Config.NAME, etName.getText().toString());
 
-                Integer ageInteger = formatInteger(etAge.getText().toString());
+                int ageInteger = Utils.formatInteger(etAge.getText().toString());
                 if (ageInteger > 0) {
-                    editor.putInt("age", ageInteger);
+                    editor.putInt(Config.AGE, ageInteger);
                 } else {
                     isValidated = false;
                     errorMessage += "Wrong Age!";
                 }
 
-                Integer radioGenderInstance = radioGender.getCheckedRadioButtonId();
+                int radioGenderInstance = radioGender.getCheckedRadioButtonId();
                 if (radioGenderInstance != -1) {
-                    editor.putString("gender", ((RadioButton) main_view.findViewById(radioGenderInstance)).getText().toString());
+                    editor.putString(Config.GENDER,
+                            ((RadioButton) main_view.findViewById(radioGenderInstance)).getText().toString());
                 } else {
                     isValidated = false;
                     errorMessage += "Wrong Gender!";
                 }
 
-                editor.putString("amount", etAmount.getText().toString());
+                editor.putString(Config.ACCOUNT, etAccount.getText().toString());
 
-                editor.putString("phone", etPhone.getText().toString());
-                editor.putString("email", etEmail.getText().toString());
-                editor.putString("job", etJob.getText().toString());
+                editor.putString(Config.PHONE, etPhone.getText().toString());
+                editor.putString(Config.EMAIL, etEmail.getText().toString());
+                editor.putString(Config.JOB, etJob.getText().toString());
 
-                Integer radioEducationInstance = radioEducation.getCheckedRadioButtonId();
+                int radioEducationInstance = radioEducation.getCheckedRadioButtonId();
                 if (radioEducationInstance != -1) {
-                    editor.putString("education", ((RadioButton) main_view.findViewById(radioEducationInstance)).getText().toString());
+                    editor.putString(Config.EDUCATION, ((RadioButton) main_view.findViewById(radioEducationInstance)).getText().toString());
                 } else {
                     isValidated = false;
                     errorMessage += "Wrong Education!";
@@ -140,11 +112,13 @@ public class RegisterAsBorrowerFragment extends Fragment {
                 if (cbInvestment.isChecked()) {
                     revenueList.add(cbInvestment.getText().toString());
                 }
-                String revenueValue = implode(revenueList, ", ");
-                editor.putString("revenue", revenueValue);
+                String revenueValue = Utils.implode(revenueList, ", ");
+                editor.putString(Config.REVENUE, revenueValue);
 
                 if (isValidated) {
-                    editor.commit();
+                    editor.putFloat(Config.CREDIT_SCORE, (float) 7.3);
+                    editor.apply();
+                    getActivity().finish();
                     Intent intent = new Intent(getActivity(), BorrowerActivity.class);
                     startActivity(intent);
                 } else {

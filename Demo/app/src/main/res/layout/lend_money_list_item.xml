@@ -44,6 +44,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_margin="7dp"
+            android:textStyle="italic"
             android:text="Stable"/>
     </RelativeLayout>
 

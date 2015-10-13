@@ -74,7 +74,7 @@ public class BorrowerFormFragment extends DialogFragment implements View.OnTouch
                 datePickerDialog.setYearRange(1985, 2028);
                 datePickerDialog.setCloseOnSingleTapDay(true);
                 datePickerDialog.show(getChildFragmentManager(), DATEPICKER_TAG);
-                datePickerDialog.setTargetFragment(getParentFragment(), 0);
+                datePickerDialog.setTargetFragment(getParentFragment(), FROM_REQUEST_CODE);
             }
         });
         etTo = (EditText) v.findViewById(R.id.etTo);
@@ -85,7 +85,7 @@ public class BorrowerFormFragment extends DialogFragment implements View.OnTouch
                 datePickerDialog.setYearRange(1985, 2028);
                 datePickerDialog.setCloseOnSingleTapDay(true);
                 datePickerDialog.show(getChildFragmentManager(), DATEPICKER_TAG);
-                datePickerDialog.setTargetFragment(getParentFragment(), 1);
+                datePickerDialog.setTargetFragment(getParentFragment(), TO_REQUEST_CODE);
 
             }
         });

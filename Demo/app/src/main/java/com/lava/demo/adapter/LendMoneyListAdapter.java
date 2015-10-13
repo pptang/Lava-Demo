@@ -64,8 +64,8 @@ public class LendMoneyListAdapter extends RecyclerView.Adapter<LendMoneyListAdap
     public void onBindViewHolder(LendMoneyListAdapter.ViewHolder holder, int position) {
         LendItem item = lendItems.get(position);
         holder.tvName.setText("Name： " + item.getName());
-        holder.tvAmount.setText("Amount： " + item.getAmount() + "NT");
-        holder.tvRate.setText("Rate： " + item.getRate() + "%");
+        holder.tvAmount.setText("Amount： " + item.getAmount() + " dollars");
+        holder.tvRate.setText("Rate： " + item.getRate());
         if (context instanceof LenderActivity) {
             holder.btnBorrow.setVisibility(View.GONE);
         } else {

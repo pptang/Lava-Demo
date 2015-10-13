@@ -5,12 +5,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp">
+        android:layout_above="@+id/ll_register"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <TextView android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
@@ -26,23 +26,23 @@
                 android:layout_below="@id/tvTitle"
                 android:background="@android:color/darker_gray"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginTop="5dp"
                 />
-
-            <TextView android:id="@+id/tvName"
+            <TextView android:id="@+id/tvBasic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Basic"
                 android:layout_below="@id/line"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:text="Name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
             <LinearLayout android:id="@+id/ll_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_below="@id/tvName"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/tvBasic"
                 android:orientation="horizontal">
 
                 <TextView
@@ -51,29 +51,80 @@
                     android:layout_weight="1"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:text="Mr./Mrs."
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+                    android:text="Name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <EditText android:id="@+id/etName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"/>
+                    android:layout_weight="3" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/ll_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_name"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Age"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etAge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:inputType="number" />
             </LinearLayout>
 
-            <TextView android:id="@+id/tvAccount"
-                android:layout_width="wrap_content"
+            <LinearLayout android:id="@+id/ll_gender"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll_name"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
-                android:text="Account"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_age"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="12.5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Gender"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <RadioGroup
+                    android:id="@+id/radioGender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginTop="10dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+                </RadioGroup>
+            </LinearLayout>
+
             <LinearLayout android:id="@+id/ll_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_below="@id/tvAccount"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_gender"
                 android:orientation="horizontal">
 
                 <TextView
@@ -83,19 +134,138 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
                     android:text="Account"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <EditText android:id="@+id/etAccount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"/>
+                    android:inputType="phone"
+                    android:layout_weight="3" />
+            </LinearLayout>
 
+            <LinearLayout android:id="@+id/ll_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_account"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Phone"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/ll_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_phone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Email"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/ll_job"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_email"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Job"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <EditText android:id="@+id/etJob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/ll_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_job"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Education"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <RadioGroup android:id="@+id/radioEducation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PhD" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Master" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="College" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Senior High School" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Junior High School" />
+                </RadioGroup>
             </LinearLayout>
             <LinearLayout android:id="@+id/ll_finance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_below="@id/ll_account"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/ll_education"
                 android:orientation="vertical">
 
                 <TextView
@@ -103,25 +273,35 @@
                     android:layout_height="wrap_content"
                     android:text="Expected Investment"
                     android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-                <CheckBox
+                <RadioGroup android:id="@+id/radioInvestment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Below 500 Thousand" />
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="500 Thousand to 1 Million" />
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1 to 2 Million" />
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2 to 5 Million" />
+                    android:layout_marginTop="10dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Below 500 Thousand" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="500 Thousand to 1 Million" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 to 2 Million" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 to 5 Million" />
+
+                </RadioGroup>
 
             </LinearLayout>
             <LinearLayout android:id="@+id/ll_source"
@@ -135,31 +315,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fund Resource"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-                <CheckBox
+                <CheckBox android:id="@+id/cbSalary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Salary" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbRetirement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Retirement Pay" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbIdleFunds"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Idle Funds" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbFundCompany"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Fund Company" />
 
             </LinearLayout>
             <LinearLayout android:id="@+id/ll_invest_tool"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_below="@id/ll_source"
                 android:orientation="vertical">
 
@@ -167,47 +353,58 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Commonly Used Investment Tool"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-                <CheckBox
+                <CheckBox android:id="@+id/cbDeposit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Deposit" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbStock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Stock" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbBond"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Bond" />
-                <CheckBox
+                <CheckBox android:id="@+id/cbCredit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Rotating Savings and Credit" />
 
-                <CheckBox
+                <CheckBox android:id="@+id/cbInsurance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Insurance" />
 
-                <CheckBox
+                <CheckBox android:id="@+id/cbEstate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Real Estate" />
 
-                <CheckBox
+                <CheckBox android:id="@+id/cbCurrency"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Deposit in Foreign Currency" />
 
-                <CheckBox
+                <CheckBox android:id="@+id/cbFund"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Fund" />
 
-                <CheckBox
+                <CheckBox android:id="@+id/cbWarrant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:text="Future Warrant" />
 
             </LinearLayout>
@@ -225,6 +422,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:fontFamily="sans-serif-thin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:text="Register"/>
     </LinearLayout>
 </RelativeLayout>

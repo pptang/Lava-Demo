@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -34,7 +35,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
         public TextView tvRevenue;
         public TextView tvGurantee;
         public Button btnAccept;
-
+        public LinearLayout llResponse;
         public ViewHolder(View v) {
             super(v);
             tvName = (TextView) v.findViewById(R.id.tvName);
@@ -44,6 +45,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
             tvRevenue = (TextView) v.findViewById(R.id.tvRevenue);
             tvGurantee = (TextView) v.findViewById(R.id.tvGurantee);
             btnAccept = (Button) v.findViewById(R.id.btnAccept);
+            llResponse = (LinearLayout) v.findViewById(R.id.ll_response);
         }
     }
 

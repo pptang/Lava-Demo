@@ -2,32 +2,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#00BCD4"
     >
 
 
-    <TextView
+    <TextView android:id="@+id/tvMainTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
         android:text="Loan Broker"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="35sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tvMainTitle"
+        android:layout_alignBottom="@id/tvMainTitle"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/gavel"/>
 
-    <LinearLayout android:id="@+id/midLine"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?attr/colorPrimaryDark"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true">
+    <TextView android:id="@+id/midLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Take advantage of every penny !"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:fontFamily="sans-serif-thin"
 
-
-    </LinearLayout>
+        />
 
     <TextView android:id="@+id/tvLendTitle"
         android:layout_width="175dp"
         android:layout_height="175dp"
         android:background="@drawable/circular_bg"
         android:text="Lend Money"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:gravity="center"
         android:layout_above="@+id/midLine"
@@ -40,6 +53,7 @@
         android:layout_height="175dp"
         android:background="@drawable/circular_bg"
         android:text="Borrow Money"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:gravity="center"
         android:layout_below="@id/midLine"
