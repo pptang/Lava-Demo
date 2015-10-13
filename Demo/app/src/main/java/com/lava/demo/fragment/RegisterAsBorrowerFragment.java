@@ -76,7 +76,7 @@ public class RegisterAsBorrowerFragment extends Fragment {
         final EditText etName = (EditText) main_view.findViewById(R.id.etName);
         final EditText etAge = (EditText) main_view.findViewById(R.id.etAge);
         final RadioGroup radioGender = (RadioGroup) main_view.findViewById(R.id.radioGender);
-        final EditText etAmount = (EditText) main_view.findViewById(R.id.etAmount);
+        final EditText etAccount = (EditText) main_view.findViewById(R.id.etAccount);
         final EditText etPhone = (EditText) main_view.findViewById(R.id.etPhone);
         final EditText etEmail = (EditText) main_view.findViewById(R.id.etEmail);
         final EditText etJob = (EditText) main_view.findViewById(R.id.etJob);
@@ -90,8 +90,7 @@ public class RegisterAsBorrowerFragment extends Fragment {
             @Override
 
             public void onClick(View viewChild) {
-                SharedPreferences sp = getActivity().getSharedPreferences(Config.BORROWER_REGISTER_STATUS,
-                        getActivity().MODE_PRIVATE);
+                SharedPreferences sp = getActivity().getSharedPreferences(Config.BORROWER_REGISTER_STATUS, getActivity().MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
 
                 Boolean isValidated = true;
@@ -116,7 +115,7 @@ public class RegisterAsBorrowerFragment extends Fragment {
                     errorMessage += "Wrong Gender!";
                 }
 
-                editor.putString("amount", etAmount.getText().toString());
+                editor.putString("account", etAccount.getText().toString());
 
                 editor.putString("phone", etPhone.getText().toString());
                 editor.putString("email", etEmail.getText().toString());
