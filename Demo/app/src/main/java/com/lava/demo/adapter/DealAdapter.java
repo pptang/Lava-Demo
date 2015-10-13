@@ -35,6 +35,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
         public TextView tvRevenue;
         public TextView tvGurantee;
         public Button btnAccept;
+        public Button btnReject;
         public LinearLayout llResponse;
         public ViewHolder(View v) {
             super(v);
@@ -45,6 +46,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
             tvRevenue = (TextView) v.findViewById(R.id.tvRevenue);
             tvGurantee = (TextView) v.findViewById(R.id.tvGurantee);
             btnAccept = (Button) v.findViewById(R.id.btnAccept);
+            btnReject = (Button) v.findViewById(R.id.btnReject);
             llResponse = (LinearLayout) v.findViewById(R.id.ll_response);
         }
     }
