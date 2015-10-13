@@ -54,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
                 <Button android:id="@+id/btnAccept"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -71,9 +72,10 @@
                     android:text="Reject"/>
             </LinearLayout>
 
-            <LinearLayout
+            <LinearLayout android:id="@+id/ll_status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -82,7 +84,7 @@
                     android:textStyle="bold"
                     android:textSize="17sp"
                     />
-                <TextView
+                <TextView android:id="@+id/tvStatus"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>

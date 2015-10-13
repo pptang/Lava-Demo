@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 
 import com.lava.demo.R;
+import com.lava.demo.activity.BorrowerActivity;
+import com.lava.demo.activity.LenderActivity;
 import com.lava.demo.model.DealInfo;
 
 import java.util.List;
@@ -34,9 +36,11 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
         public TextView tvMethod;
         public TextView tvRevenue;
         public TextView tvGurantee;
+        public TextView tvStatus;
         public Button btnAccept;
         public Button btnReject;
         public LinearLayout llResponse;
+        public LinearLayout llStatus;
         public ViewHolder(View v) {
             super(v);
             tvName = (TextView) v.findViewById(R.id.tvName);
@@ -48,6 +52,8 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
             btnAccept = (Button) v.findViewById(R.id.btnAccept);
             btnReject = (Button) v.findViewById(R.id.btnReject);
             llResponse = (LinearLayout) v.findViewById(R.id.ll_response);
+            llStatus = (LinearLayout) v.findViewById(R.id.ll_status);
+            tvStatus = (TextView) v.findViewById(R.id.tvStatus);
         }
     }
 
@@ -68,6 +74,14 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
         holder.tvMethod.setText("Methods of Repayment： " + dealInfo.getMethod());
         holder.tvRevenue.setText("Revenue： " + dealInfo.getRevenue());
         holder.tvGurantee.setText("Gurantee： " + dealInfo.getGurantee());
+
+        if (context instanceof LenderActivity) {
+            holder.llResponse.setVisibility(View.VISIBLE);
+        } else if (context instanceof BorrowerActivity) {
+            holder.llStatus.setVisibility(View.VISIBLE);
+            holder.tvStatus.setText("Pending");
+        }
+
 //        holder.btnAccept.setOnClickListener(view -> {
 //            Alert.show(context, "Deal!");
 //        });

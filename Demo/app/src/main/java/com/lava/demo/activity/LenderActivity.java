@@ -11,7 +11,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import com.lava.demo.Config;
 import com.lava.demo.fragment.LendMoneyFragment;
 import com.lava.demo.fragment.LendMoneyListFragment;
 import com.lava.demo.fragment.LenderDealFragment;
@@ -44,7 +47,11 @@ public class LenderActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) setupDrawerContent(navigationView);
-
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header);
+        TextView tv = (TextView) headerView.findViewById(R.id.tvHeaderName);
+        String userName =
+                getSharedPreferences(Config.LENDER_REGISTER_STATUS, MODE_PRIVATE).getString(Config.NAME, "User");
+        tv.setText(userName);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

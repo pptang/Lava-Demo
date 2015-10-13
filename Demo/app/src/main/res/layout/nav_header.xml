@@ -7,7 +7,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:gravity="bottom">
 
-    <TextView
+    <TextView android:id="@+id/tvHeaderName"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="Tommy"

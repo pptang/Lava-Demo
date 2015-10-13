@@ -9,9 +9,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import com.lava.demo.Config;
 import com.lava.demo.fragment.BorrowerDealFragment;
 import com.lava.demo.fragment.BorrowerProfileFragment;
 import com.lava.demo.fragment.LendMoneyListFragment;
@@ -42,6 +46,11 @@ public class BorrowerActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) setupDrawerContent(navigationView);
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header);
+        TextView tv = (TextView) headerView.findViewById(R.id.tvHeaderName);
+        String userName =
+                getSharedPreferences(Config.BORROWER_REGISTER_STATUS, MODE_PRIVATE).getString(Config.NAME, "User");
+        tv.setText(userName);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
