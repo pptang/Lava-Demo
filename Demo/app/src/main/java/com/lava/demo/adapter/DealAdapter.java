@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.lava.demo.Config;
 import com.lava.demo.R;
 import com.lava.demo.activity.BorrowerActivity;
 import com.lava.demo.activity.LenderActivity;
@@ -37,6 +38,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
         public TextView tvRevenue;
         public TextView tvGurantee;
         public TextView tvStatus;
+        public TextView tvCreditScore;
         public Button btnAccept;
         public Button btnReject;
         public LinearLayout llResponse;
@@ -54,6 +56,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
             llResponse = (LinearLayout) v.findViewById(R.id.ll_response);
             llStatus = (LinearLayout) v.findViewById(R.id.ll_status);
             tvStatus = (TextView) v.findViewById(R.id.tvStatus);
+            tvCreditScore = (TextView) v.findViewById(R.id.tvCreditScore);
         }
     }
 
@@ -77,10 +80,43 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
 
         if (context instanceof LenderActivity) {
             holder.llResponse.setVisibility(View.VISIBLE);
+            switch (position) {
+                case 0:
+                    holder.tvName.setText("Name： " + "Bible");
+                    holder.tvCreditScore.setText("Credit Score： 7.3");
+                    break;
+                case 1:
+                    holder.tvName.setText("Name： " + "Jenny");
+                    holder.tvCreditScore.setText("Credit Score： 4.9");
+                    holder.tvCreditScore.setTextColor(context.getResources().getColor(R.color.red));
+                    break;
+                case 2:
+                    holder.tvName.setText("Name： " + "Jack");
+                    holder.tvCreditScore.setText("Credit Score： 5.8");
+                    holder.tvCreditScore.setTextColor(context.getResources().getColor(R.color.grey));
+                    break;
+            }
+
         } else if (context instanceof BorrowerActivity) {
             holder.llStatus.setVisibility(View.VISIBLE);
-            holder.tvStatus.setText("Pending");
+            switch (position) {
+                case 0:
+                    holder.tvStatus.setTextColor(context.getResources().getColor(R.color.grey));
+                    holder.tvStatus.setText("Processing");
+                    break;
+                case 1:
+                    holder.tvStatus.setTextColor(context.getResources().getColor(R.color.green));
+                    holder.tvStatus.setText("Accepted");
+                    break;
+                case 2:
+                    holder.tvStatus.setTextColor(context.getResources().getColor(R.color.red));
+                    holder.tvStatus.setText("Rejected");
+
+            }
+
         }
+
+
 
 //        holder.btnAccept.setOnClickListener(view -> {
 //            Alert.show(context, "Deal!");

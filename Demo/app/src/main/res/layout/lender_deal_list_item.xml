@@ -23,7 +23,9 @@
                 android:layout_height="1dp"
                 android:layout_below="@id/tvName"
                 android:background="@android:color/darker_gray"
-                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
                 />
             <TextView android:id="@+id/tvPeriod"
                 android:layout_width="wrap_content"
@@ -50,31 +52,49 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
+            <TextView android:id="@+id/tvCreditScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="17sp"
+                android:textColor="@color/green"
+                android:textStyle="bold"/>
+
+            <View android:id="@+id/bottom_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                />
+
             <LinearLayout android:id="@+id/ll_response"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:visibility="gone">
                 <Button android:id="@+id/btnAccept"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_margin="15dp"
                     android:backgroundTint="@color/primary_dark"
                     android:text="Accept"/>
                 <Button android:id="@+id/btnReject"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_margin="15dp"
-                    android:backgroundTint="@color/primary_dark"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="@color/red"
                     android:text="Reject"/>
             </LinearLayout>
 
             <LinearLayout android:id="@+id/ll_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:visibility="gone">
                 <TextView
                     android:layout_width="0dp"
@@ -82,12 +102,14 @@
                     android:layout_weight="1"
                     android:text="Status : "
                     android:textStyle="bold"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     />
                 <TextView android:id="@+id/tvStatus"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:textSize="25sp"
+                    android:textStyle="italic"/>
             </LinearLayout>
         </LinearLayout>
 

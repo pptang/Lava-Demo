@@ -20,6 +20,7 @@ import com.lava.demo.fragment.BorrowerDealFragment;
 import com.lava.demo.fragment.BorrowerProfileFragment;
 import com.lava.demo.fragment.LendMoneyListFragment;
 import com.lava.demo.R;
+import com.lava.demo.fragment.LenderDealFragment;
 
 public class BorrowerActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -95,7 +96,7 @@ public class BorrowerActivity extends AppCompatActivity {
                         fragment = new BorrowerProfileFragment();
                         break;
                     case R.id.nav_deal:
-                        fragment = new BorrowerDealFragment();
+                        fragment = new LenderDealFragment();
                         break;
                 }
 
