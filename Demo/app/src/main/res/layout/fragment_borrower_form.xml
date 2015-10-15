@@ -30,33 +30,27 @@
                 android:background="@android:color/darker_gray"
                 android:layout_margin="10dp"
                 />
-            <TextView android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/line"
-                android:layout_margin="10dp"
-                android:text="Name:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
             <LinearLayout android:id="@+id/ll_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_below="@id/tvName"
+                android:layout_margin="10dp"
+                android:layout_below="@id/line"
                 android:orientation="horizontal">
 
-
-                <TextView
+                <TextView android:id="@+id/tvName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="5dp"
-                    android:text="Mr./Mrs."
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-                <EditText android:id="@+id/etName"
+                    android:text="Name:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+                <TextView android:id="@+id/tvLenderName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"/>
-
+                    android:layout_weight="3"
+                    android:textSize="22sp"
+                    android:textStyle="italic"/>
 
 
             </LinearLayout>

@@ -20,11 +20,8 @@ import com.lava.demo.model.ProfileItem;
 
 import java.util.ArrayList;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class LenderProfileFragment extends Fragment {
+
     private Activity activity;
     private ArrayList<ProfileItem> profileItems = new ArrayList<ProfileItem>();
     private RecyclerView borrowerProfileRecyclerView;

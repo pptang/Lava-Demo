@@ -63,9 +63,9 @@ public class LenderDealFragment extends Fragment {
             protected Void doInBackground(Void... params) {
 
 
-                DealInfo info1 = new DealInfo("Tommy", "2015/10/02~2016/11/04", "Fund Turnover", "Periodic", "Salary",
+                DealInfo info1 = new DealInfo("Bible", "2015/10/02~2016/11/04", "Fund Turnover", "Periodic", "Salary",
                         "Yes");
-                DealInfo info2 = new DealInfo("Mark", "2015/11/19~2018/11/19", "Land Purchase", "Bullet Repayment", "Investment",
+                DealInfo info2 = new DealInfo("Tommy", "2015/11/19~2018/11/19", "Land Purchase", "Bullet Repayment", "Investment",
                         "No");
                 DealInfo info3 = new DealInfo("Kevin", "2015/11/19~2015/12/30", "Family Turnover", "Periodic", "Sales",
                         "Yes");

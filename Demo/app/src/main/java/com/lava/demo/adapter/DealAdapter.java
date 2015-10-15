@@ -71,7 +71,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(DealAdapter.ViewHolder holder, int position) {
         DealInfo dealInfo = dealInfos.get(position);
-        holder.tvName.setText("Name： " + dealInfo.getBorrowerName());
+        holder.tvName.setText("Lender： " + dealInfo.getBorrowerName());
         holder.tvPeriod.setText("Period： " + dealInfo.getPeriod());
         holder.tvPurpose.setText("Purpose： " + dealInfo.getPurpose());
         holder.tvMethod.setText("Methods of Repayment： " + dealInfo.getMethod());
@@ -82,16 +82,16 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.ViewHolder> {
             holder.llResponse.setVisibility(View.VISIBLE);
             switch (position) {
                 case 0:
-                    holder.tvName.setText("Name： " + "Bible");
+                    holder.tvName.setText("Borrower： " + "Mark");
                     holder.tvCreditScore.setText("Credit Score： 7.3");
                     break;
                 case 1:
-                    holder.tvName.setText("Name： " + "Jenny");
+                    holder.tvName.setText("Borrower： " + "Jenny");
                     holder.tvCreditScore.setText("Credit Score： 4.9");
                     holder.tvCreditScore.setTextColor(context.getResources().getColor(R.color.red));
                     break;
                 case 2:
-                    holder.tvName.setText("Name： " + "Jack");
+                    holder.tvName.setText("Borrower： " + "Jack");
                     holder.tvCreditScore.setText("Credit Score： 5.8");
                     holder.tvCreditScore.setTextColor(context.getResources().getColor(R.color.grey));
                     break;

@@ -21,7 +21,7 @@
             android:textSize="20sp"
             android:textColor="#777777"
             android:fontFamily="sans-serif-thin"
-            android:text="No lenders yet..."/>
+            android:text="No records yet..."/>
     </LinearLayout>
 </RelativeLayout>
 

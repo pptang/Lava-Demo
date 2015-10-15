@@ -1,9 +1,12 @@
 package com.lava.demo.fragment;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,8 +16,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.fourmob.datetimepicker.date.DatePickerDialog;
+import com.lava.demo.Config;
 import com.lava.demo.R;
 
 import java.util.Calendar;
@@ -55,11 +60,32 @@ public class BorrowerFormFragment extends DialogFragment implements View.OnTouch
         RelativeLayout rlContainer = (RelativeLayout) v.findViewById(R.id.rl_container);
         rlContainer.setOnTouchListener(this);
 
+        TextView tvLenderName = (TextView) v.findViewById(R.id.tvLenderName);
+        tvLenderName.setText(getActivity()
+                .getSharedPreferences(Config.BORROWER_REGISTER_STATUS, Context.MODE_PRIVATE)
+                .getString(Config.NAME, "User"));
+
+
         LinearLayout llConfirm = (LinearLayout) v.findViewById(R.id.llConfirm);
         llConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Successfully Sent !");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dismiss();
+                        Fragment fragment = new LenderDealFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.main_container, fragment).commit();
+
+                    }
+                });
+                builder.show();
             }
 
         });
