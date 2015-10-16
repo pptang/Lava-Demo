@@ -5,6 +5,10 @@ package com.lava.demo;
  */
 public class Config {
 
+    public static final String BASE_URL = "https://citimobilechallenge.anypresenceapp.com/";
+    public static final String CLIENT_ID = "f1e43cfe-8d4d-47e3-926a-e44bbee07f24";
+    public static final String ACCOUNT_ID = "63e84046-879c-4209-bf4a-13a94386d6da";
+
     public static final String LENDER_REGISTER_STATUS = "RegisterAsLender";
     public static final String BORROWER_REGISTER_STATUS = "RegisterAsBorrower";
     public static final String IS_REGISTERED = "isRegistered";
